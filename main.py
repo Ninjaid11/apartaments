@@ -82,7 +82,6 @@ def get_comments(apartment_id):
     return comments
 
 
-
 # таблица
 def init_db():
     conn = get_db()
@@ -116,7 +115,7 @@ def init_db():
 
 
 @app.route('/', methods=['GET'])
-def home():
+def index():
     min_price = request.args.get('min_price', type=float, default=0)
     max_price = request.args.get('max_price', type=float, default=float('inf'))
     city = request.args.get('city', default="").strip()
@@ -151,7 +150,7 @@ def home():
 
     conn.close()
 
-    return render_template('home.html', apartments=apartments)
+    return render_template('index.html', apartments=apartments)
 
 
 @app.route('/admin', methods=['GET', 'POST'])
@@ -273,7 +272,7 @@ def apartment_details(apartment_id):
 
     if not apartment:
         flash('Квартира не найдена.', 'danger')
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
 
     return render_template('apartment_details.html', apartment=apartment, apartments=apartments, comments=comments)
 
@@ -299,11 +298,11 @@ def buy_apartment(apartment_id):
 
     if not apartment:
         flash('Квартира не найдена.', 'danger')
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
 
     if request.method == 'POST':
         flash(f'Спасибо за покупку!', 'success')
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
 
     return render_template('buy_apartment.html', apartment=apartment)
 
