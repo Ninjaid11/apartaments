@@ -1,0 +1,160 @@
+/* Основной фон с анимацией */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #2C3E50, #34495E);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+/* Анимация фона с плавным переходом */
+@keyframes gradientAnimation {
+    0% {
+        background: linear-gradient(45deg, #2C3E50, #34495E);
+    }
+    25% {
+        background: linear-gradient(45deg, #1F2A44, #283747);
+    }
+    50% {
+        background: linear-gradient(45deg, #34495E, #2C3E50);
+    }
+    75% {
+        background: linear-gradient(45deg, #283747, #1F2A44);
+    }
+    100% {
+        background: linear-gradient(45deg, #2C3E50, #34495E);
+    }
+}
+
+/* Заголовок */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #007bff;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Кнопки */
+.btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 180px; /* Минимальная ширина кнопки */
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.btn-lg {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+/* Форма поиска */
+form {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Список квартир */
+.list-group-item {
+    font-size: 1.1rem;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 400;
+}
+
+.list-group-item:hover {
+    background-color: #f1f3f5;
+    transform: translateY(-3px);
+}
+
+/* Кнопки в списке */
+.btn-warning,
+.btn-danger {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.btn-warning {
+    margin-right: 10px;
+    background-color: #f39c12;
+}
+
+.btn-warning:hover {
+    background-color: #e67e22;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+/* Стиль для текста в формах */
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9; /* фон для полей */
+    font-weight: 400;
+}
+
+/* Убираем стандартное белое выделение при фокусе */
+input:focus, select:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none; /* выделение */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* тень */
+}
+
+/* Стиль для заголовков форм */
+.form-label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Стили для кнопок в формах */
+button {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

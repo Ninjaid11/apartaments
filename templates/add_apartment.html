@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить квартиру</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='banner.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        /* Основной фон с анимацией */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #2C3E50, #34495E); /* Начальный темный градиент */
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite; /* Анимация с плавным переходом */
+        }
+
+        /* Анимация фона с плавным переходом */
+        @keyframes gradientAnimation {
+            0% {
+                background: linear-gradient(45deg, #2C3E50, #34495E);
+            }
+            25% {
+                background: linear-gradient(45deg, #1F2A44, #283747);
+            }
+            50% {
+                background: linear-gradient(45deg, #34495E, #2C3E50);
+            }
+            75% {
+                background: linear-gradient(45deg, #283747, #1F2A44);
+            }
+            100% {
+                background: linear-gradient(45deg, #2C3E50, #34495E);
+            }
+        }
+
+        /* Заголовок */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #007bff;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* Кнопки */
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            min-width: 180px; /* Минимальная ширина кнопки */
+        }
+
+        .btn-lg {
+            padding: 12px 25px;
+            font-size: 1.2rem;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        .text-center {
+            margin-bottom: 20px;
+        }
+
+        /* Форма поиска */
+        form {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Список квартир */
+        .list-group-item {
+            font-size: 1.1rem;
+            padding: 15px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .list-group-item:hover {
+            background-color: #f1f3f5;
+            transform: translateY(-3px);
+        }
+
+        /* Стиль для текста в формах */
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        /* Мобильная адаптивность */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .btn-lg {
+                font-size: 1rem;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body class="container mt-5">
+    <!-- Правый боковой баннер -->
+    <div class="sidebar-banner right">
+        <img src="{{ url_for('static', filename='банер.jpeg') }}" alt="Правый рекламный баннер">
+    </div>
+
+    <div class="text-center">
+        <h1 class="mb-4">Добавить новую квартиру</h1>
+        <form method="POST" enctype="multipart/form-data" class="text-start mx-auto" style="max-width: 600px;">
+            <div class="mb-3">
+                <label for="title" class="form-label">Название:</label>
+                <input type="text" id="title" name="title" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Описание:</label>
+                <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Цена(грн/месяц):</label>
+                <input type="number" id="price" name="price" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="city" class="form-label">Город:</label>
+                <input type="text" id="city" name="city" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="district" class="form-label">Район:</label>
+                <input type="text" id="district" name="district" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="rooms" class="form-label">Количество комнат:</label>
+                <input type="number" id="rooms" name="rooms" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="floor" class="form-label">Этаж:</label>
+                <input type="number" id="floor" name="floor" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="apartments_class" class="form-label">Класс:</label>
+                <select id="apartments_class" name="apartments_class" class="form-control" required>
+                    <option value="Эконом">Эконом</option>
+                    <option value="Стандарт">Стандарт</option>
+                    <option value="Люкс">Люкс</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="photo" class="form-label">Главное фото:</label>
+                <input type="file" id="photo" name="photo" class="form-control" accept="image/*" required>
+            </div>
+            <div class="mb-3">
+                <label for="additional_photo" class="form-label">Дополнительное фото:</label>
+                <input type="file" id="additional_photo" name="additional_photo" class="form-control" accept="image/*">
+            </div>
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" onclick="window.history.back();">Назад</button>
+                <button type="submit" class="btn btn-primary">Добавить</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Левый боковой баннер -->
+    <div class="sidebar-banner left">
+        <img src="{{ url_for('static', filename='банер.jpeg') }}" alt="Левый рекламный баннер">
+    </div>
+</body>
+</html>

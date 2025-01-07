@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель администратора</title>
+    <link href="{{ url_for('static', filename='admin_dashboard.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJX1oF+5hW3l2iF0vLxjh0pxtgntZT0qIuMrfPzREyF+8A1JOM2yZy8zXZX6" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center text-primary mb-4">Панель администратора</h1>
+
+        <div class="mb-4 text-center">
+            <button class="btn btn-outline-primary btn-lg me-3" onclick="window.location.href='{{ url_for('home') }}'">На главную</button>
+
+            <button class="btn btn-success btn-lg" onclick="window.location.href='{{ url_for('add_apartment') }}'">Добавить квартиру</button>
+        </div>
+
+        <form method="get" action="{{ url_for('admin_dashboard') }}" class="mb-4">
+            <div class="mb-3">
+                <label for="search_title" class="form-label">Поиск по названию:</label>
+                <input type="text" id="search_title" name="search_title" class="form-control" placeholder="Введите название квартиры" value="{{ search_title }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="search_city" class="form-label">Поиск по городу:</label>
+                <input type="text" id="search_city" name="search_city" class="form-control" placeholder="Введите город" value="{{ search_city }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="search_district" class="form-label">Поиск по району:</label>
+                <input type="text" id="search_district" name="search_district" class="form-control" placeholder="Введите район" value="{{ search_district }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="search_apartments_class">Класс квартиры:</label>
+                        <select id="search_apartments_class" name="search_apartments_class">
+                        <option value="">Все</option>
+                        <option value="Эконом">Эконом</option>
+                        <option value="Стандарт">Стандарт</option>
+                        <option value="Люкс">Люкс</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg w-100">Поиск</button>
+        </form>
+
+        <ul class="list-group">
+            {% for apartment in apartments %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span><strong>{{ apartment['title'] }}</strong> - Цена(грн/месяц): {{ apartment['price'] }} грн - Город: {{ apartment['city'] }} - Район: {{ apartment['district'] }} - Класс: {{ apartment['apartments_class'] }}</span>
+                    <div>
+                        <button class="btn btn-warning btn-sm me-2" onclick="window.location.href='{{ url_for('edit_apartment', apartment_id=apartment['id']) }}'">Изменить</button>
+
+                        <button class="btn btn-danger btn-sm" onclick="window.location.href='{{ url_for('delete_apartment', apartment_id=apartment['id']) }}'">Удалить</button>
+                    </div>
+                </li>
+            {% else %}
+                <li class="list-group-item text-center">Нет квартир, соответствующих запросу.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gyb6g3Jl2R9zBO+6t27m46M5o5s5h02Hk3PQzDHRh7fwXNm+L7" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0pW8cRXXQF13xQamkWpK+x1lPO1lF2xGMlm7dA5VZ2TnJbeT" crossorigin="anonymous"></script>
+</body>
+</html>

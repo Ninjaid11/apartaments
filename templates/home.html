@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='banner.css') }}">
+    <title>Поиск квартир</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title">Добро пожаловать на сайт по поиску квартир!</h1>
+            <button class="admin-button" onclick="window.location.href='/admin'">Админ</button>
+        </div>
+    </header>
+
+    <div class="sidebar-banner left">
+        <img src="{{ url_for('static', filename='банер.jpeg') }}" alt="Левый рекламный баннер">
+    </div>
+
+    <section class="filters">
+        <div class="container">
+            <h2 class="filters-title">Фильтры</h2>
+            <form method="get" class="filter-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="min_price">Цена от: (грн/месяц)</label>
+                        <input type="number" id="min_price" name="min_price" placeholder="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="max_price">Цена до: (грн/месяц)</label>
+                        <input type="number" id="max_price" name="max_price" placeholder="1000000">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Город:</label>
+                        <input type="text" id="city" name="city" placeholder="Например, Киев">
+                    </div>
+                    <div class="form-group">
+                        <label for="district">Район:</label>
+                        <input type="text" id="district" name="district" placeholder="Например, Печерский">
+                    </div>
+                    <div class="form-group">
+                        <label for="rooms">Количество комнат:</label>
+                        <input type="number" id="rooms" name="rooms" placeholder="1, 2, 3...">
+                    </div>
+                    <div class="form-group">
+                        <label for="floor">Этаж:</label>
+                        <input type="number" id="floor" name="floor" placeholder="1, 2, 3...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="apartments_class">Класс квартиры:</label>
+                        <select id="apartments_class" name="apartments_class">
+                            <option value="">Все</option>
+                            <option value="Эконом">Эконом</option>
+                            <option value="Стандарт">Стандарт</option>
+                            <option value="Люкс">Люкс</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="submit-button">Применить</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="apartments">
+        <div class="container">
+            <h2 class="apartments-title">Список квартир</h2>
+            <div class="apartment-list">
+                {% for apartment in apartments %}
+                    <div class="apartment-card">
+                        {% if apartment['photo'] %}
+                            <img src="{{ url_for('static', filename='uploads/' + apartment['photo']) }}" class="apartment-img" alt="Фото квартиры">
+                        {% else %}
+                            <img src="{{ url_for('static', filename='uploads/default.jpg') }}" class="apartment-img" alt="Фото квартиры">
+                        {% endif %}
+                        <div class="apartment-body">
+                            <h5 class="apartment-title">{{ apartment['title'] }}</h5>
+                            <p class="apartment-price">Цена: {{ apartment['price'] }} грн/месяц</p>
+                            <p class="apartment-city">Город: {{ apartment['city'] }}</p>
+                            <p class="apartment-district">Район: {{ apartment['district'] }}</p>
+                            <p class="apartment-rooms">Комнат: {{ apartment['rooms'] }}</p>
+                            <p class="apartment-floor">Этаж: {{ apartment['floor'] }}</p>
+                        </div>
+                        <div class="apartment-actions">
+                            <button onclick="window.location.href='{{ url_for('apartment_details', apartment_id=apartment['id']) }}'" class="btn btn-info">Узнать больше</button>
+                            <button onclick="window.location.href='{{ url_for('buy_apartment', apartment_id=apartment['id']) }}'" class="btn btn-success">Купить</button>
+                            <div class="apartment-class bg-light p-3 border rounded">
+                                <p class="mb-0"><strong>{{ apartment['apartments_class'] }}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Правый боковой баннер -->
+    <div class="sidebar-banner right">
+        <img src="{{ url_for('static', filename='банер.jpeg') }}" alt="Правый рекламный баннер">
+    </div>
+</body>
+</html>

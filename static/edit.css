@@ -1,0 +1,149 @@
+/* Основной фон с анимацией */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #2C3E50, #34495E);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite; /* Анимация фона */
+}
+
+/* Анимация фона */
+@keyframes gradientAnimation {
+    0% {
+        background: linear-gradient(45deg, #2C3E50, #34495E);
+    }
+    25% {
+        background: linear-gradient(45deg, #1F2A44, #283747);
+    }
+    50% {
+        background: linear-gradient(45deg, #34495E, #2C3E50);
+    }
+    75% {
+        background: linear-gradient(45deg, #283747, #1F2A44);
+    }
+    100% {
+        background: linear-gradient(45deg, #2C3E50, #34495E);
+    }
+}
+
+/* Стили для контейнера */
+.container {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Заголовок */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Стили для формы */
+form {
+    padding: 20px;
+}
+
+/* Ввод текста в форму */
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Стили для кнопок */
+.btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-lg {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+/* Стили для кнопки назад */
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+/* Стили для изображения в форме */
+img.img-thumbnail {
+    width: 200px;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для заголовков форм */
+.form-label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Общие стили для контейнеров и элементов */
+.mb-3 {
+    margin-bottom: 1.5rem;
+}
+
+/* Стиль для текста в формах */
+textarea {
+    resize: vertical; /* Возможность изменения размера textarea по вертикали */
+}
+
+/* Добавление небольших отступов для лучшего восприятия */
+.container, form {
+    margin-bottom: 30px;
+}
+
+/* Стиль для файла изображений */
+input[type="file"] {
+    padding: 5px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Дополнительные стили для формы с фото */
+img {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

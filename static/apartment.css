@@ -1,0 +1,322 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #2C3E50, #34495E);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite; /* Анимация */
+}
+
+/* Анимация фона */
+@keyframes gradientAnimation {
+    0% {
+        background: linear-gradient(45deg, #2C3E50, #34495E);
+    }
+    25% {
+        background: linear-gradient(45deg, #1F2A44, #283747);
+    }
+    50% {
+        background: linear-gradient(45deg, #34495E, #2C3E50);
+    }
+    75% {
+        background: linear-gradient(45deg, #283747, #1F2A44);
+    }
+    100% {
+        background: linear-gradient(45deg, #2C3E50, #34495E);
+    }
+}
+
+/* Стиль заголовка */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 15px 30px;
+    background-color: rgba(0, 123, 255, 0.8);
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 40px;
+    border: 3px solid #0056b3;
+    animation: fadeInFromTop 2s ease-out;
+}
+
+/* Анимация для заголовка */
+@keyframes fadeInFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Карусель */
+.carousel-item img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
+    animation: zoomIn 1.5s ease-out;
+}
+
+/* Анимация увеличения изображения */
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* Стиль стрелок карусели */
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #007bff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-out;
+}
+
+/* Стиль стрелок при наведении */
+.carousel-control-prev-icon:hover, .carousel-control-next-icon:hover {
+    background-color: #0056b3;
+    transform: scale(1.2);
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 8%;
+}
+
+/* Блок информации */
+.info-block {
+    margin-top: 50px;
+    font-size: 1.2rem;
+    padding: 20px;
+    border: 3px solid #007bff; /* Рамка */
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    animation: fadeInUp 2s ease-out; /* появление */
+}
+
+/* описания квартиры */
+.description {
+    font-weight: bold;
+    font-size: 1.2em; /* размер */
+    margin-bottom: 15px;
+    color: #333;
+    border: 2px solid black; /*обводка */
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* класса квартиры */
+.class {
+    margin-top: 15px;
+}
+
+.class span {
+    font-weight: bold;
+    color: #333;
+    border: 2px solid black; /* обводка */
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Кнопка "Купить" */
+.buy-button {
+    font-size: 1.2rem;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Эффект при наведении на кнопку */
+.buy-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+/* Эффект при клике на кнопку */
+.buy-button:active {
+    transform: scale(1); /* размер после клика */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Эффект фокуса на кнопке */
+.buy-button:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
+}
+
+
+.info-block p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.info-block strong {
+    color: #007bff;
+    font-size: 1.2rem;
+}
+
+/* коментарии */
+
+/* заголовок */
+.comments-title {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 15px 30px;
+    background-color: rgba(0, 123, 255, 0.8);
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 40px;
+    border: 3px solid #0056b3;
+    animation: fadeInFromTop 2s ease-out;
+    margin-top: 30px; /* отступ */
+    border: 1px solid #007bff;
+    margin-bottom: 30px;
+}
+
+/* анимация для заголовка комментариев */
+@keyframes fadeInFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* форма добавления комментария */
+.comment-form {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    border: 3px solid #007bff;
+    animation: fadeInUp 2s ease-out;
+}
+
+.comment-form .form-group {
+    margin-bottom: 20px;
+}
+
+.comment-form .form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.comment-form .form-input,
+.comment-form .form-textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+    transition: border-color 0.3s ease;
+}
+
+/* эффект на полях*/
+.comment-form .form-input:focus,
+.comment-form .form-textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* кнопка отправки*/
+.submit-button {
+    font-size: 1.2rem;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* эффект на кнопку */
+.submit-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+/* эффектна кнопку */
+.submit-button:active {
+    transform: scale(1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* фокуса */
+.submit-button:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
+}
+
+/* разделитель */
+.divider {
+    margin-top: 40px;
+    border: 1px solid #007bff;
+    margin-bottom: 30px;
+}
+
+/* список комментариев */
+.comment-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comment-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    animation: fadeInUp 2s ease-out;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.comment-date {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.comment-content {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* анимация для списка комментариев */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
